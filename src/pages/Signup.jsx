@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import base_url from "../services/helper";
+import {useAuth} from '../store/authStore'
 
 const Signup = () => {
   const [userDetails, setUserDetails] = useState({
@@ -10,6 +11,7 @@ const Signup = () => {
     password: "",
   });
   const navigate = useNavigate();
+  const {notify} = useAuth();
 
   const handleChange = (e) => {
     setUserDetails({ ...userDetails, [e.target.name]: e.target.value });
@@ -30,6 +32,7 @@ const Signup = () => {
       );
       if(response.status==201){
         console.log('User successfully registered.')
+        notify('User successfully registered.')
         setUserDetails({
           name: "",
           email: "",

@@ -14,7 +14,7 @@ const Navbar = () => {
         <div className="flex-none gap-6">
           <div className="flex gap-4">
             <NavLink to='/home' className='text-md font-medium hover:underline underline-offset-2'>Home</NavLink>
-            <NavLink to='/events' className='text-md font-medium hover:underline underline-offset-2'>Events</NavLink>
+            <NavLink to='/events' className={`text-md font-medium hover:underline underline-offset-2 ${!isLoggedIn?'hidden':''} `}>Events</NavLink>
             <NavLink to='/about' className='text-md font-medium hover:underline underline-offset-2'>About</NavLink>
             <NavLink to='/contact' className='text-md font-medium hover:underline underline-offset-2'>Contact</NavLink>
             <NavLink to='/login' className={`text-md font-medium hover:underline underline-offset-2 ${isLoggedIn?'hidden':''} `}>Login</NavLink>

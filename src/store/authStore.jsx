@@ -1,9 +1,13 @@
 import { createContext, useContext, useEffect, useState } from "react";
+import {toast} from 'react-toastify';
 
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const notify = (msg) => {
+    toast.success(msg);
+  }
 
   useEffect(() => {
     const storedToken = localStorage.getItem("token");
@@ -13,7 +17,7 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>
+    <AuthContext.Provider value={{ notify, isLoggedIn, setIsLoggedIn }}>
       {children}
     </AuthContext.Provider>
   );

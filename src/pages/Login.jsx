@@ -10,7 +10,7 @@ const Login = () => {
     password: "",
   });
   const navigate = useNavigate();
-  const {setIsLoggedIn} = useAuth();
+  const {setIsLoggedIn, notify} = useAuth();
 
   const handleChange = (e) => {
     setLoginDetails({ ...loginDetails, [e.target.name]: e.target.value });
@@ -36,6 +36,7 @@ const Login = () => {
         });
         localStorage.setItem('token', response.data.token);
         localStorage.setItem('userId', response.data._id);
+        notify("User successfully logged in.")
         navigate("/home");
         setIsLoggedIn(true);
       }
